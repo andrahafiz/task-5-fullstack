@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('content');
+            $table->string('image');
+            $table->foreignId('user_id')->constrained('users');
+            $table->string('category_id')->constrained('categories');
             $table->timestamps();
         });
     }
