@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         //Seeader Tabel User
-        \App\Models\User::insert([
+        \App\Models\User::insert([[
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('asdasdasd')
@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Andra',
             'email' => 'andra@gmail.com',
             'password' => Hash::make('asdasdasd')
-        ]);
+        ]]);
 
         $this->call([
             CategorieSeeder::class,

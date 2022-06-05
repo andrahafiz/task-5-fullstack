@@ -16,18 +16,20 @@ class CategorieSeeder extends Seeder
     public function run()
     {
         //
-        Categorie::create(
+        Categorie::insert(
             [
-                'name' => 'Kesehatan',
-                'user_id' => '1'
-            ],
-            [
-                'name' => 'Olahraga',
-                'user_id' => '1'
-            ],
-            [
-                'name' => 'Teknologi',
-                'user_id' => '2'
+                [
+                    'name' => 'Kesehatan',
+                    'user_id' => '1'
+                ],
+                [
+                    'name' => 'Olahraga',
+                    'user_id' => '1'
+                ],
+                [
+                    'name' => 'Teknologi',
+                    'user_id' => '2'
+                ]
             ]
         );
     }
