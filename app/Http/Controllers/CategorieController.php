@@ -16,6 +16,8 @@ class CategorieController extends Controller
     public function index()
     {
         //
+        $categories = Categorie::all();
+        return view('categorie.index', compact('categories'));
     }
 
     /**
@@ -47,7 +49,6 @@ class CategorieController extends Controller
      */
     public function show(Categorie $categorie)
     {
-        //
     }
 
     /**
@@ -82,5 +83,9 @@ class CategorieController extends Controller
     public function destroy(Categorie $categorie)
     {
         //
+        // dd($categorie);
+        Categorie::find($categorie->id)->delete();
+
+        return redirect()->route('categorie')->with('status', 'Categorie deleted');
     }
 }
