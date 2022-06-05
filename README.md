@@ -3,7 +3,6 @@ Virtual Internship Experience (Investree) - Fullstack - Andra Hotmartua Al Hafiz
 ## API Article
 
 > Lihat Article ----- GET : http://localhost:8000/api/v1/article
-
 > Detail Article ----- GET : http://localhost:8000/api/v1/article/{id}
 
 > Tambah Article ----- POST : http://localhost:8000/api/v1/article
