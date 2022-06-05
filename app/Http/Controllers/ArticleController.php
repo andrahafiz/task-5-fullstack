@@ -16,6 +16,9 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $articles = Article::with('categories')->get();
+        // dd($articles);
+        return view('article.index', compact('articles'));
     }
 
     /**
@@ -48,6 +51,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         //
+        $article = $article;
+        return view('article.detail', compact('article'));
     }
 
     /**
