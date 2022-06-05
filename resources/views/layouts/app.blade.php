@@ -41,7 +41,7 @@
                         <a class="nav-link " href="#">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link {{ Request::routeIs('categorie') ? 'active' :'' }}" href="{{  route('categorie') }}">Categorie</a>
+                        <a class="nav-link {{ Request::routeIs('categorie.index') ? 'active' :'' }}" href="{{  route('categorie.index') }}">Categorie</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>

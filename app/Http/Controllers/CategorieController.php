@@ -65,7 +65,9 @@ class CategorieController extends Controller
     public function edit(Categorie $categorie)
     {
         //
-        $categorie = Categorie::find($categorie->id)->first();
+
+        // dd($categorie);
+        // $categorie = Categorie::find($categorie->id)->first();
         return view('categorie.edit', compact('categorie'));
     }
 
@@ -83,7 +85,7 @@ class CategorieController extends Controller
         $categorie = Categorie::find($categorie->id);
         // dd($categorie);
         $categorie->update($request->all());
-        return redirect()->route('categorie')->with('status', 'Categorie has been chganged successfully');
+        return redirect()->route('categorie.index')->with('status', 'Categorie has been chganged successfully');
     }
 
     /**
@@ -97,6 +99,6 @@ class CategorieController extends Controller
         //
         // Categorie::find($categorie->id)->delete();
         $categorie->delete();
-        return redirect()->route('categorie')->with('status', 'Categorie deleted');
+        return redirect()->route('categorie.index')->with('status', 'Categorie deleted');
     }
 }
