@@ -13,7 +13,20 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <form method="POST" action="{{ route('categorie.store') }}">
+                        @method('POST')  
+                        @csrf
+                        <div class="mb-3">
+                          <label for="nameinput" class="form-label">Categorie Name</label>
+                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="nameinput" aria-describedby="name" name="name">
+                          @error('name')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                          @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                      </form>
                     <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
@@ -28,7 +41,7 @@
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{$categorie->name}}</td>
                                     <td class="text-center">
-                                        <a href="">
+                                        <a href="{{ route('categorie.edit', $categorie->id) }}">
                                             <button type="button" class="btn btn-labeled btn-primary btn-sm mb-0 d-inline">
                                                 <span class="btn-label"><i class="fa fa-edit"></i></span>Edit</button>
                                         </a>

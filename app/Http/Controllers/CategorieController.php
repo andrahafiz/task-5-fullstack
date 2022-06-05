@@ -39,6 +39,9 @@ class CategorieController extends Controller
     public function store(StoreCategorieRequest $request)
     {
         //
+        $request['user_id'] = '1';
+        Categorie::create($request->all());
+        return back()->with('status', 'Category has been added');
     }
 
     /**
@@ -49,6 +52,8 @@ class CategorieController extends Controller
      */
     public function show(Categorie $categorie)
     {
+        // $test = Categorie::find($categorie);
+        return $categorie;
     }
 
     /**
@@ -60,6 +65,8 @@ class CategorieController extends Controller
     public function edit(Categorie $categorie)
     {
         //
+        $categorie = Categorie::find($categorie->id)->first();
+        return view('categorie.edit', compact('categorie'));
     }
 
     /**
@@ -72,6 +79,11 @@ class CategorieController extends Controller
     public function update(UpdateCategorieRequest $request, Categorie $categorie)
     {
         //
+        // dd($request);
+        $categorie = Categorie::find($categorie->id);
+        // dd($categorie);
+        $categorie->update($request->all());
+        return redirect()->route('categorie')->with('status', 'Categorie has been chganged successfully');
     }
 
     /**
@@ -83,9 +95,8 @@ class CategorieController extends Controller
     public function destroy(Categorie $categorie)
     {
         //
-        // dd($categorie);
-        Categorie::find($categorie->id)->delete();
-
+        // Categorie::find($categorie->id)->delete();
+        $categorie->delete();
         return redirect()->route('categorie')->with('status', 'Categorie deleted');
     }
 }

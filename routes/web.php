@@ -24,10 +24,11 @@ Auth::routes();
 //Route Categories
 Route::group(['prefix' => 'categorie'], function () {
     Route::get('/', [CategorieController::class, 'index'])->name('categorie');
+    Route::get('/{categorie}', [CategorieController::class, 'show'])->name('categorie.show');
     Route::get('/create', [CategorieController::class, 'create'])->name('categorie.create');
     Route::post('/store', [CategorieController::class, 'store'])->name('categorie.store');
     Route::get('/edit/{categorie}', [CategorieController::class, 'edit'])->name('categorie.edit');
     Route::put('/update/{categorie}', [CategorieController::class, 'update'])->name('categorie.update');
-    Route::delete('/destroy/{id}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
+    Route::delete('/destroy/{categorie}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
