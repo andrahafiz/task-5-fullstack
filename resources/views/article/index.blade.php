@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('Categorie') }}</div>
+                <div class="card-header">{{ __('Article') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,39 +13,33 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('categorie.store') }}">
-                        @method('POST')  
-                        @csrf
-                        <div class="mb-3">
-                          <label for="nameinput" class="form-label">Categorie Name</label>
-                          <input type="text" class="form-control @error('name') is-invalid @enderror" id="nameinput" aria-describedby="name" name="name">
-                          @error('name')
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                          @enderror
-                        </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                      </form>
                     <table class="table table-striped table-bordered">
                         <thead>
                           <tr>
-                            <th scope="col" style="width: 10%;">No</th>
-                            <th scope="col">Name Categorie</th>
-                            <th scope="col" class="text-center" style="width: 35%;">Action</th>
+                            <th scope="col" style="width: 8%;">No</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" class="text-center" style="width: 20%;">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $categorie)
+                            @foreach ($articles as $article)
                                 <tr class="align-middle">
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td>{{$categorie->name}}</td>
-                                    <td class="text-center">
-                                        <a href="{{ route('categorie.edit', $categorie->id) }}">
-                                            <button type="button" class="btn btn-labeled btn-primary btn-sm mb-0 d-inline">
+                                    <td>{{$article->title}}</td>
+                                    <td>{{ Str::limit($article->content,500,'...')}}</td>
+                                    <td>{{$article->categories->name}}</td>
+                                    <td class=" text-center">
+                                        <a href="{{ route('article.show', $article->id) }}" class="d-block">
+                                            <button type="button" class="btn btn-labeled btn-secondary btn-sm">
+                                                <span class="btn-label"><i class="fa fa-eye"></i></span>Detail</button>
+                                        </a>
+                                        <a href="{{ route('article.show', $article->id) }}" class="d-block" >
+                                            <button type="button" class="btn btn-labeled btn-primary btn-sm ">
                                                 <span class="btn-label"><i class="fa fa-edit"></i></span>Edit</button>
                                         </a>
-                                        <form method="post" class="d-inline" action="{{ route('categorie.destroy', $categorie->id) }}">
+                                        <form method="post" class="d-block" action="{{ route('article.destroy', $article->id) }}">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="btn btn-labeled btn-danger btn-sm mb-0">

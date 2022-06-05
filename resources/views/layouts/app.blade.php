@@ -38,7 +38,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item ">
-                        <a class="nav-link " href="#">Home</a>
+                            <a class="nav-link {{ Request::routeIs('article.*') ? 'active' :'' }}" href="{{  route('article.index') }}">Article</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link {{ Request::routeIs('categorie.*') ? 'active' :'' }}" href="{{  route('categorie.index') }}">Categorie</a>
