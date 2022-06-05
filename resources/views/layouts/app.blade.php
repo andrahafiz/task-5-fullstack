@@ -37,11 +37,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <li class="nav-item ">
+                        <a class="nav-link " href="#">Home</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link {{ Request::routeIs('categorie') ? 'active' :'' }}" href="{{  route('categorie') }}">Categorie</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">Pricing</a>
